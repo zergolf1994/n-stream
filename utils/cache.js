@@ -33,7 +33,7 @@ exports.saveData = (videoId, data) => {
     if (!fs.existsSync(cacheDir)) {
       fs.mkdirSync(cacheDir, { recursive: true });
     }
-    console.log(`new-cache`, videoId);
+    //console.log(`new-cache`, videoId);
     fs.writeFileSync(cacheFile, JSON.stringify(data), "utf8");
   } catch (error) {
     return { error: true };
