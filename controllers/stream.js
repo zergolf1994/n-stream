@@ -84,7 +84,7 @@ exports.streamTS = async (req, res) => {
     request({ url }, (err, resp, body) => {})
       .on("response", function (res) {
         res.headers["content-type"] = Check.contentType(ext);
-        res.headers["Cache-control"] = Check.cacheControl();
+        res.headers["Cache-control"] = "public, max-age=31536000, immutable";
       })
       .pipe(res);
   } catch (err) {
@@ -186,6 +186,19 @@ exports.streamMP4 = async (req, res) => {
     });*/
   } catch (err) {
     console.log(err);
+    return res.status(500).end();
+  }
+};
+exports.RedirectstreamTS = async (req, res) => {
+  try {
+    const { videoId, item } = req.params;
+    const ext = req.params[0];
+    res.set({
+      Referer: req.get("host"),
+      Origin: req.get("host"),
+    });
+    return res.redirect(`//${req.get("host")}/${videoId}/${item}.${ext}`);
+  } catch (err) {
     return res.status(500).end();
   }
 };
