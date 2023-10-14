@@ -8,6 +8,8 @@ exports.contentType = (ext) => {
       return "image/png";
     case "jpg":
       return "image/jpeg";
+    case "ts":
+      return "video/mp2t";
 
     default:
       return `image/${ext}`;

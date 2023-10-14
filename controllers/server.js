@@ -5,6 +5,9 @@ exports.serverCreate = async (req, res) => {
   try {
     let { ipV4, hostname } = getOs();
 
+    return res.json({
+      msg: `เพิ่มเซิฟเวอร์ ${hostname} สำเร็จ`,
+    });
     const server = await Server.List.findOne({
       svIp: ipV4,
     }).select(`_id svIp`);
