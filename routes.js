@@ -8,7 +8,7 @@ const {
   RedirectstreamTS,
 } = require("./controllers/stream");
 
-router.route("/:videoId/:item.(txt|html|png|jpg|ts)").get(streamTS);
+router.route("/:videoId/:item.(txt|html|png|jpg|ts|aaa)").get(streamTS);
 router.route("/re/:videoId/:item.(txt|html|png|jpg|ts)").get(RedirectstreamTS);
 //router.route("/:videoId.mp4").get(streamMP4);
 
