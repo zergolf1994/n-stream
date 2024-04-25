@@ -83,7 +83,8 @@ exports.streamTS = async (req, res) => {
 
     request({ url }, (err, resp, body) => {})
       .on("response", function (res) {
-        res.headers["content-type"] = Check.contentType(ext);
+        res.headers["content-type"] = "text/plain; charset=utf-8"
+        //res.headers["content-type"] = Check.contentType(ext);
         res.headers["Cache-control"] = "public, max-age=31536000, immutable";
       })
       .pipe(res);
